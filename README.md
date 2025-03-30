@@ -1,108 +1,85 @@
-# SM4-ECB Encryption Tool
+# SM4-ECB Encryption Tool Documentation
 
-![SM4 Encryption](https://img.shields.io/badge/Algorithm-SM4-blue)
-![ECB Mode](https://img.shields.io/badge/Mode-ECB-yellow)
-![Pure JavaScript](https://img.shields.io/badge/Pure-JavaScript-success)
+## Overview
 
-A web-based implementation of the SM4 block cipher in ECB (Electronic Codebook) mode, compliant with the Chinese national standard GB/T 32907-2016.
+This is a web-based implementation of the SM4 encryption algorithm in ECB (Electronic Codebook) mode. SM4 is a Chinese national standard block cipher algorithm (GB/T 32907-2016) that uses a 128-bit block size and 128-bit key length.
 
 ## Features
 
-- 🔒 SM4 encryption/decryption with 128-bit keys
-- 🖥️ Pure JavaScript implementation (no dependencies)
-- 🔢 Hex input/output with space formatting support
-- ✅ Built-in test case for verification
-- 📱 Responsive design works on all devices
-- ⚠️ Clear ECB mode security warnings
+- **Encryption/Decryption**: Supports both encryption and decryption operations
+- **Hex Input/Output**: Works with hexadecimal formatted data (spaces allowed for readability)
+- **Test Case Included**: Comes with a pre-loaded test case to verify correct operation
+- **Warning System**: Clearly warns about the security limitations of ECB mode
+- **Responsive Design**: Works on both desktop and mobile devices
 
-## Security Notice
+## Security Note
 
-**Warning:** ECB mode is not secure for most real-world applications as it reveals patterns in your data. This implementation should only be used for:
-
+⚠️ **Important Warning**: This tool uses ECB (Electronic Codebook) mode which is not secure for most real-world applications. ECB reveals patterns in your data as identical plaintext blocks produce identical ciphertext blocks. This implementation should only be used for:
 - Educational purposes
-- Algorithm testing
-- Debugging and development
+- Testing and debugging
+- Understanding the SM4 algorithm
 
-## Installation
+## How to Use
 
-No installation required - just open the HTML file in any modern browser:
+### Encryption
 
-```bash
-git clone https://github.com/yourusername/sm4-ecb-tool.git
-cd sm4-ecb-tool
-open index.html
+1. Enter your plaintext in hex format in the "Plaintext" field (spaces are allowed)
+2. Enter a 16-character (128-bit) encryption key
+3. Click "Encrypt (SM4-ECB)" button
+4. View the encrypted result in hex format
+5. The ciphertext is automatically copied to the decryption section
 
-Usage
-Encryption
-Enter plaintext in hex format (spaces allowed)
+### Decryption
 
-Enter 16-character (128-bit) encryption key
+1. Enter your ciphertext in hex format in the "Ciphertext" field (spaces are allowed)
+2. Enter the same 16-character (128-bit) key used for encryption
+3. Click "Decrypt (SM4-ECB)" button
+4. View the decrypted result in hex format
 
-Click "Encrypt" button
+### Test Case
 
-View encrypted result
+A test case is provided to verify the tool is working correctly:
+- **Plaintext**: `8c a3 64 fc 00 00 00 00 7e 32 5f 46 7e 32 5f 02`
+- **Key**: `0123456789ABCDEF`
+- **Expected Result**: `F01F830BFF4EF82B11579D6EDA5D1AA5`
 
-Decryption
-Enter ciphertext in hex format
+## Technical Details
 
-Enter original 16-character key
+### SM4 Algorithm Specifications
+- **Block size**: 128 bits
+- **Key length**: 128 bits
+- **Rounds**: 32
+- **S-box**: Uses a fixed 8-bit substitution box (S-box)
+- **Key expansion**: Generates 32 round keys from the original key
 
-Click "Decrypt" button
+### Implementation Notes
+- Pure JavaScript implementation (no external dependencies)
+- Processes data in 16-byte (128-bit) blocks
+- Handles hex input with or without spaces
+- Includes proper error handling for invalid input
 
-View decrypted result
+## Limitations
 
-Test Case
-Verify correct operation with built-in test:
+1. ECB mode is not secure for production use
+2. Only accepts hex input (no direct text encryption)
+3. Requires exact 16-character (128-bit) keys
+4. Input must be a multiple of 16 bytes (32 hex characters)
 
-Plaintext: 8c a3 64 fc 00 00 00 00 7e 32 5f 46 7e 32 5f 02
+## Browser Compatibility
 
-Key: 0123456789ABCDEF
+This tool should work in all modern browsers including:
+- Chrome
+- Firefox
+- Safari
+- Edge
+- Opera
 
-Expected: F01F830BFF4EF82B11579D6EDA5D1AA5
+## Source Code
 
-Technical Specifications
-Parameter	Value
-Algorithm	SM4
-Block Size	128 bits
-Key Length	128 bits
-Rounds	32
-Mode	ECB
-Standard	GB/T 32907-2016
-Browser Support
-✅ Chrome
-✅ Firefox
-✅ Safari
-✅ Edge
-✅ Opera
+The complete source code is contained within a single HTML file with:
+- HTML structure
+- CSS styling
+- JavaScript implementation of SM4
+- User interface handlers
 
-Contributing
-Contributions are welcome! Please open an issue or pull request for:
-
-Bug fixes
-
-Security improvements
-
-Feature enhancements
-
-License
-MIT License - See LICENSE file for details
-
-
-This README includes:
-
-1. Badges for quick visual identification
-2. Clear security warnings upfront
-3. Installation and usage instructions
-4. Technical specifications table
-5. Browser compatibility
-6. Contribution guidelines
-7. License information
-
-The formatting uses standard GitHub Markdown with:
-- Headers and sections
-- Code blocks
-- Tables
-- Lists
-- Emojis for visual cues
-
-You can copy this directly into a `README.md` file in your project root. Just replace `yourusername` with your actual GitHub username in the installation instructions.
+The code is self-contained with no external dependencies.
